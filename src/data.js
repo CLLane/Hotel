@@ -337,7 +337,7 @@ let fakeData = [
         roomNumber: 24
       },
       {
-        userID: 100,
+        userID: 1,
         date: "2019/10/18",
         roomNumber: 9
       },
@@ -358,7 +358,7 @@ let fakeData = [
     roomServices: [
       {
         userID: 14,
-        date: "2019/07/29",
+        date: "2019/07/26",
         food: "Rustic Concrete Sandwich",
         totalCost: 14.9
       },
@@ -400,7 +400,7 @@ let fakeData = [
       },
       {
         userID: 86,
-        date: "2019/09/16",
+        date: "2019/07/26",
         food: "Incredible Concrete Sandwich",
         totalCost: 24.77
       },
@@ -429,7 +429,7 @@ let fakeData = [
         totalCost: 22.45
       },
       {
-        userID: 36,
+        userID: 1,
         date: "2019/08/17",
         food: "Tasty Granite Sandwich",
         totalCost: 18.73

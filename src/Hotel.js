@@ -1,9 +1,14 @@
+import Order from "./Order";
+import Customer from './Customer'
+
 class Hotel {
   constructor(customerData, roomData, bookingData, roomServiceData) {
     this.customerData = customerData.users;
     this.roomData = roomData.rooms;
     this.bookingData = bookingData.bookings;
     this.roomServiceData = roomServiceData.roomServices;
+    this.newOrder = {}
+
   }
 
   getTodaysDate() {
@@ -51,15 +56,22 @@ class Hotel {
   }
 
   findCustomerObject(customerQuery) {
-    let formattedQuery = customerQuery.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>{}[\]\\/' ']/gi, '').toLowerCase();
+    let formattedQuery = customerQuery.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>{}[\]\\/' '0123456789]/gi, '').toLowerCase();
     
     let customerObject = this.customerData.filter(customer => {
-      let formattedCustomer = customer.name.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>{}[\]\\/' ']/gi, '').toLowerCase();
+      let formattedCustomer = customer.name.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>{}[\]\\/' '0123456789]/gi, '').toLowerCase();
+
       return formattedCustomer === formattedQuery;
     })[0];
 
-    return customerObject !== undefined ? customerObject : `${customerQuery} does not exist, would you like to add a new customer?`;
+    return customerObject !== undefined ? new Customer(customerObject, this.roomData, this.bookingData, this.roomServiceData) : `${customerQuery} does not exist, would you like to add a new customer?`;
   }
+
+  createNewOrder() {
+    this.newOrder = new Order(this.roomServiceData, this.getTodaysDate())
+    return this.newOrder
+  } 
+
 
 }
 
