@@ -13,4 +13,5 @@ describe('Customer', () => {
   it('Should be a function', () => {
     expect(Customer).to.be.a('function')
   });
+  
 });
