@@ -1,0 +1,125 @@
+* {
+  box-sizing: border-box;
+  font-family: Oxygen, sans-serif;
+  font-weight: 300;
+}
+
+main { 
+    // height: 8em;
+    // display: flex;
+    // justify-content: space-evenly;
+    // align-items: center;
+  perspective: 76em;
+	perspective-origin: 50% 50px;
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  & input {
+    display: none;
+  }
+  & label {
+    position: absolute;
+    width: 95px;;
+    height: 70px;
+    right: 0;
+    line-height: 70px;
+    border-radius: 10px;
+
+    &:nth-child(1) { 
+    top: -5px;
+    background: #06D6A0;
+  }
+  &:nth-child(2) {
+    top: 69px;
+    background: #1B9AAA;
+  }
+  &:nth-child(3) {
+    top: 143px;
+    background: #EF476F;
+  }
+  // &:nth-child(4) {
+  //   top: 222px;
+  //   background: purple;
+  // }
+  }
+}
+
+
+section {
+display: flex;
+    justify-content: center;
+    margin: 27px 0px 0px 10px;
+    /* position: relative; */
+    /* margin: 60px auto 0; */
+    width: 92%;
+    height: 200px;
+    margin-bottom: 5px;
+    /* transform-origin: 0 90px; */
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease-in;
+}
+
+article {
+  width: 93%;
+  height: 200px;
+  position: absolute;
+  background-color: #EF476F;
+  border-radius: 10px;
+    &:nth-child(1) {
+    transform: translateZ(100px);
+    background: #1B9AAA;
+  }
+    &:nth-child(2) {
+    transform: rotateX(-270deg)
+    translateY(-100px);
+    transform-origin: top left;
+    background: #06D6A0;
+  }
+    &:nth-child(3) {
+    transform: rotateX(-90deg)
+    translateY(100px);
+    transform-origin: bottom center;
+    background: #EF476F;
+  } 
+  //   &:nth-child(4) {
+  //   transform: rotateX(90deg)
+  //   translateY(100px);
+  //   transform-origin: bottom center;
+  //   background: #EF476F;
+  // } 
+}
+
+aside {
+    margin-top: 20px;
+    width: 33%;
+    height: 550px;
+    border-radius: 10px;
+    background-color: #EF476F;
+}
+
+div {
+  display: flex;
+}
+
+fieldset {
+  width: 66%;
+  height: 550px;
+  margin-top: 20px;
+  margin-left: 12px;
+  border: none;
+  background: bisque;
+  border-radius: 10px;
+}
+// #tab-top:checked ~ .cube {
+//   transform: rotateX(-90deg);
+// }
+// #tab-front:checked ~ .cube {
+//   transform: rotateX(0deg);
+// }
+// #tab-bottom:checked ~ .cube {
+//   transform: rotateX(90deg);
+// }
+
+// #tab-back:checked ~ .cube {
+//   transform: rotateX(-180deg);
+// }

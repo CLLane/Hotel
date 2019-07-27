@@ -1,9 +1,14 @@
+
+import Customer from './Customer'
+
 class Hotel {
   constructor(customerData, roomData, bookingData, roomServiceData) {
     this.customerData = customerData.users;
     this.roomData = roomData.rooms;
     this.bookingData = bookingData.bookings;
     this.roomServiceData = roomServiceData.roomServices;
+    this.newOrder = {}
+
   }
 
   getTodaysDate() {
@@ -20,6 +25,12 @@ class Hotel {
     return [year, month, day].join('/');
   }
 
+  findAllOrdersForDate() {
+    return this.roomServiceData.filter(order => {
+      return order.date === this.getTodaysDate()
+    })
+  }
+
   findTotalRoomsAvailable () {
     return this.bookingData.reduce((acc, booking) => {
       if (booking.date !== this.getTodaysDate()) {
@@ -27,6 +38,14 @@ class Hotel {
       }
       return acc
     }, 0);
+  }
+
+  findTotalRevenueFromOrders() {
+    let ordersForToday = this.findAllOrdersForDate();
+    return ordersForToday.reduce((acc, order) => {
+      acc += order.totalCost
+      return acc
+    }, 0)
   }
 
   findTotalRevenueFromRooms() {
@@ -41,6 +60,12 @@ class Hotel {
     }, 0)
   }
 
+  totalRevenueForToday() {
+    return this.findTotalRevenueFromOrders() + this.findTotalRevenueFromRooms()
+   
+  
+  }
+
   findPercentRoomsFilled() {
     let roomsAvailable = this.findTotalRoomsAvailable();
     let totalRooms = this.roomData.length;
@@ -51,16 +76,17 @@ class Hotel {
   }
 
   findCustomerObject(customerQuery) {
-    let formattedQuery = customerQuery.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>{}[\]\\/' ']/gi, '').toLowerCase();
+    let formattedQuery = customerQuery.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>{}[\]\\/' '0123456789]/gi, '').toLowerCase();
     
     let customerObject = this.customerData.filter(customer => {
-      let formattedCustomer = customer.name.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>{}[\]\\/' ']/gi, '').toLowerCase();
+      let formattedCustomer = customer.name.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>{}[\]\\/' '0123456789]/gi, '').toLowerCase();
+
       return formattedCustomer === formattedQuery;
     })[0];
 
-    return customerObject !== undefined ? customerObject : `${customerQuery} does not exist, would you like to add a new customer?`;
+    return customerObject !== undefined ? new Customer(customerObject, this.roomData, this.bookingData, this.roomServiceData) : `${customerQuery} does not exist, would you like to add a new customer?`;
   }
-
+  
 }
 
 export default Hotel;

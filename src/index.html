@@ -1,13 +1,44 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <title>Webpack Starter Kit</title>
+    <title>Hotel Admn</title>
   </head>
   <body>
-    <h1>Webpack Starter Kit</h1>
-
-    <img src="/images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-
-    <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
+    <main>
+      <!-- <nav class="view-point__display"> -->
+        <label class="tab" for="tab-top">Main</label>
+        <label class="tab" for="tab-front">Customer</label>
+        <label class="tab" for="tab-bottom">Orders</label>
+        <!-- <label class="tab" for="tab-back">Bookings</label> -->
+        <input type="radio" name="tabs" id="tab-top">
+        <input type="radio" name="tabs" id="tab-front">
+        <input type="radio" name="tabs" id="tab-bottom">
+        <!-- <input type="radio" name="tabs" id="tab-back"> -->
+      <!-- </nav> -->
+      <section class="cube">
+        <article class="tab-content">
+          <h1>TOP CONTENT</h1>
+          <p>THIS IS AWESOME</p>
+        </article>
+        <article class="tab-content">
+          <h1>FRONT CONTENT</h1>
+          <p>THIS IS COOL</p>
+        </article>
+        <article class="tab-content">
+          <h1>BOTTOM CONTENT</h1>
+          <p>THIS IS SWEET</p>
+        </article>
+        <!-- <article class="tab-content">
+          <h1>BOTTOM CONTENT</h1>
+          <p>THIS IS SWEET</p>
+        </article> -->
+      </section>
+      <div>
+        <aside>
+        </aside>
+        <fieldset>
+        </fieldset>
+      </div>
+    </main>
   </body>
 </html>
