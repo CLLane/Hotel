@@ -4,10 +4,13 @@ class Order {
     this.date = date
   }
 
-  findAllOrdersForDate() {
-    return this.orderData.filter(order => {
-      return order.date === this.date
-    })
+  // findAllOrdersForDate() {
+  //   return this.orderData.filter(order => {
+  //     return order.date === this.date
+  //   })
+  // }
+  roomServiceTotalBill() {
+    return 
   }
 }
 

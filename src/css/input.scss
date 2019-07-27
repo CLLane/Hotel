@@ -1,0 +1,9 @@
+#tab-top:checked ~ .cube {
+  transform: rotateX(-90deg);
+}
+#tab-front:checked ~ .cube {
+  transform: rotateX(0deg);
+}
+#tab-bottom:checked ~ .cube {
+  transform: rotateX(90deg);
+}

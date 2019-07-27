@@ -61,9 +61,15 @@ describe('Hotel', () => {
     expect(customerObj3).to.eql('@#$%@2dadkl! does not exist, would you like to add a new customer?')
   });
   
-  it('Should be able to create a new order', () => {
-    let order = hotel.createNewOrder();
-    expect(typeof order).to.eql('object');
+  it('Should be able to find all the orders for the current day', () => {
+    let ordersTotal = hotel.findAllOrdersForDate();
+    expect(ordersTotal.length).to.eql(2)
+    expect(ordersTotal[0].food).to.eql('Rustic Concrete Sandwich')
   });
   
+  it.only('Should be able to find the total revenue from roomservice for today', () => {
+    let totalRevenue = hotel.totalRevenueForToday();
+    expect(totalRevenue).to.eql(371.74);
+  })
+
 });

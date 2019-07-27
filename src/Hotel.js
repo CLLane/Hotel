@@ -1,4 +1,4 @@
-import Order from "./Order";
+
 import Customer from './Customer'
 
 class Hotel {
@@ -25,6 +25,12 @@ class Hotel {
     return [year, month, day].join('/');
   }
 
+  findAllOrdersForDate() {
+    return this.roomServiceData.filter(order => {
+      return order.date === this.getTodaysDate()
+    })
+  }
+
   findTotalRoomsAvailable () {
     return this.bookingData.reduce((acc, booking) => {
       if (booking.date !== this.getTodaysDate()) {
@@ -32,6 +38,14 @@ class Hotel {
       }
       return acc
     }, 0);
+  }
+
+  findTotalRevenueFromOrders() {
+    let ordersForToday = this.findAllOrdersForDate();
+    return ordersForToday.reduce((acc, order) => {
+      acc += order.totalCost
+      return acc
+    }, 0)
   }
 
   findTotalRevenueFromRooms() {
@@ -44,6 +58,12 @@ class Hotel {
       })
       return acc
     }, 0)
+  }
+
+  totalRevenueForToday() {
+    return this.findTotalRevenueFromOrders() + this.findTotalRevenueFromRooms()
+   
+  
   }
 
   findPercentRoomsFilled() {
@@ -66,13 +86,7 @@ class Hotel {
 
     return customerObject !== undefined ? new Customer(customerObject, this.roomData, this.bookingData, this.roomServiceData) : `${customerQuery} does not exist, would you like to add a new customer?`;
   }
-
-  createNewOrder() {
-    this.newOrder = new Order(this.roomServiceData, this.getTodaysDate())
-    return this.newOrder
-  } 
-
-
+  
 }
 
 export default Hotel;

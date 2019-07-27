@@ -1,3 +1,4 @@
+import Order from './Order'
 
 class Customer {
   constructor(customerObj, roomData, bookingData, roomServiceData) {
@@ -40,6 +41,11 @@ class Customer {
       return `${this.customerName} is not currently staying with us.`
     }
   }
+
+  createNewOrder() {
+    this.newOrder = new Order(this.roomServiceData, this.customer)
+    return this.newOrder
+  } 
 }
 
 export default Customer;

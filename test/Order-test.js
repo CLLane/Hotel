@@ -18,15 +18,4 @@ describe('Order', () => {
     expect(Order).to.be.a('function')
   });
 
-  it('Should be able to find all the orders for a given date', () => {
-
-    let todaysOrders = order1.findAllOrdersForDate();
-    let specificDate = order2.findAllOrdersForDate();
-
-    expect(todaysOrders.length).to.eql(2)
-    expect(todaysOrders[0].food).to.eql('Rustic Concrete Sandwich')
-    expect(specificDate.length).to.eql(1)
-    expect(specificDate[0].food).to.eql('Handcrafted Rubber Sandwich')
-
-  })
 });
