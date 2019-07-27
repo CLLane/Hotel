@@ -25,6 +25,36 @@ class Customer {
       }
     });
   }
+
+  findCustomerDailyOrders(date) {
+    let dailyOrders = this.findCustomerTotalOrders()
+    return dailyOrders.filter(order => {
+      if (order.date === date) {
+        return order
+      }
+    })
+  }
+
+  calculateCustomerTotalOrderBill() {
+    let customerOrders = this.findCustomerTotalOrders();
+    return customerOrders.reduce((acc, order) => {
+      if (order.totalCost !== undefined) {
+        acc += order.totalCost
+      }
+      return acc
+    }, 0)
+  }
+
+  calculateCustomerDailyOrderBill(date) {
+    console.log('date :', date);
+    let customerOrders = this.findCustomerTotalOrders();
+    return customerOrders.reduce((acc, order) => {
+      if (order.date === date) {
+        acc += order.totalCost
+      }
+      return acc
+    }, 0)
+  }
   
   findCustomerCurrentRoom(date) {
     let currentBooking = this.findCustomerTotalBookings().find(booking => {
@@ -40,6 +70,29 @@ class Customer {
     } else {
       return `${this.customerName} is not currently staying with us.`
     }
+  }
+  calculateBookingTotalBill() {
+    let allBookings = this.findCustomerTotalBookings()
+    return allBookings.reduce((acc, booking) => {
+      this.roomData.forEach(room => {
+        if (room.number === booking.roomNumber) {
+          acc += room.costPerNight
+        }
+      })
+      return acc
+    }, 0).toFixed(2)
+  }
+
+  calculateCustomerTotalBill() {
+    let roomServiceBill = this.calculateCustomerTotalOrderBill();
+    let roomTotal = this.calculateBookingTotalBill();
+    return eval(roomTotal) + roomServiceBill
+  }
+
+  calculateCustomerDailyBill(date) {
+    let roomServiceBill = this.findCustomerDailyOrders(date)
+    let currentRoom = this.findCustomerCurrentRoom(date)
+    return currentRoom.costPerNight + roomServiceBill
   }
 
   createNewOrder() {

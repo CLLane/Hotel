@@ -1,0 +1,31 @@
+#tab-top:checked ~ .cube {
+  transform: rotateX(-90deg);
+}
+#tab-front:checked ~ .cube {
+  transform: rotateX(0deg);
+}
+#tab-bottom:checked ~ .cube {
+  transform: rotateX(90deg);
+}
+
+#customer-input__input{
+    display: unset;
+    width: 35%;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 35px;
+}
+
+#date-input__input {
+    display: unset;
+    width: 65%;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 35px;
+}
