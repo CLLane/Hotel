@@ -12,7 +12,8 @@
     display: unset;
     width: 35%;
     height: 40px;
-    border: none;
+    border: solid black 2px;
+    box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.8);
     border-radius: 8px;
     margin-top: 20px;
     text-align: center;
@@ -23,7 +24,8 @@
     display: unset;
     width: 65%;
     height: 40px;
-    border: none;
+    border: solid black 2px;
+    box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.8);
     border-radius: 8px;
     margin-top: 20px;
     text-align: center;
