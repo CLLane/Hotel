@@ -26,16 +26,14 @@ let domUpdates = {
         <p>Date: ${booking.date} Room: ${booking.roomNumber}</p>
         </div>`)
       }
-      if (i > 9 && i <= 18) {
+      if (i > 9 && i <= 19) {
         $("#past-booking__display2").append(`<div class="past-booking">
         <p>Date: ${booking.date}</p> 
         <p>Room: ${booking.roomNumber}</p>
         </div>`)
       }
       if (i > 18) {
-        $("#past-booking__display3").append(`<div class= "past-booking">
-        <p>Date: ${booking.date} Room: ${booking.roomNumber}</p>
-        </div>`)
+        return
       }
     }))
     
@@ -48,8 +46,19 @@ let domUpdates = {
     $('#current-bidet-status__display').text(customerInfo.booking.daily.bidet);
     $('#current-room-cost__display').text(customerInfo.booking.daily.costPerNight)
 
-    
-  }
+    $('.order-history__display').text(customerInfo.order.total.forEach((order, i) => {
+      if (i <= 9) {
+        $("#past-order__display").append(`
+        <div class="past-order" >
+          <p>
+            Date: ${order.date} <br>
+            Food: ${order.food} <br>
+            Cost: ${order.totalCost} <br>
+          </p>
+        </div>`)
+      }
+    }))
+  },
 
 };
 

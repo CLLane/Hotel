@@ -52,7 +52,7 @@
         </article>
         <article class="tab-content">
           <h1 class="customer-name__display">Order History</h1>
-          <p id="order-info__display"></p>
+          <p id="past-order__display"></p>
         </article>
       </section>
       <div>
@@ -79,7 +79,7 @@
           <fieldset>
             <input type="input" autocomplete="off" id="customer-input__input" placeholder="Customer Search">
             <section>
-              <div>
+              <div class="current-bill__display">
                 <p>Total Bill for:  <span id="current-date__bill"></span></p>
                 <div>
                   <p>Booking: $</p>
@@ -94,7 +94,7 @@
                   <p id="total-daily__bill"></p>
                 </div>
               </div>
-              <div>
+              <div class="total-bill__display">
                 <p id="lifetime-spent__bill">Lifetime Bill</p>
                 <div>
                   <p>Lifetime Booking: $</p>
@@ -111,7 +111,17 @@
               </div>
             </section>
           </fieldset>
-          <div class="order-history__display">
+          <div class="available-room__search">
+            <div id="room-type__filter">
+              <label for="checkbox_id">Suite</label>
+              <input type="checkbox" id="room-checkbox__suite">
+              <label for="checkbox_id">Residental Suite</label>
+              <input type="checkbox" id="room-checkbox__residental">
+              <label for="checkbox_id">Junior Suite</label>
+              <input type="checkbox" id="room-checkbox__junior">
+              <label for="checkbox_id">Single Room</label>
+              <input type="checkbox" id="room-checkbox__single">
+            </div>
             </div>
           </div>
         </div>
