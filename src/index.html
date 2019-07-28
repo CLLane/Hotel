@@ -13,16 +13,46 @@
         <input type="radio" name="tabs" id="tab-bottom">
       <section class="cube">
         <article class="tab-content">
-          <h1 class="customer-name__display">Customer</h1>
-          <p id="customer-info__display">Some Stuff about the Customer</p>
+          <h1 id="customer-name__display">Customer Info Board</h1>
+          <p id="customer-id__display">Please Select a customer to view their information.</p>
+          <div class="customer-container__display">
+            <div class="customer-header__display">
+              <p>Room Type</p>
+              <p id="current-room-type__display"></p>
+            </div>
+            <div class="customer-header__display">
+              <p>Room Number</p>
+              <p id="current-room-number__display"></p>
+            </div>
+            <div class="customer-header__display">
+              <p>Bed Size</p>
+              <p id="current-bed-size__display"></p>
+            </div>
+            <div class="customer-header__display">
+              <p>Bed Count</p>
+              <p id="current-bed-count__display"></p>
+            </div>
+            <div class="customer-header__display">
+              <p>Bidet</p>
+              <p id="current-bidet-status__display"></p>
+            </div>
+            <div class="customer-header__display">
+              <p>Cost</p>
+              <p id="current-room-cost__display"></p>
+            </div>
+          </div>
         </article>
         <article class="tab-content">
-          <h1 class="customer-name__display">Booking Date</h1>
-          <p id="booking-info__display">THIS IS COOL</p>
+          <h1>Past Bookings</h1>
+          <div class="past-booking__container">
+            <p id="past-booking__display1"></p>
+            <p id="past-booking__display2"></p>
+            <p id="past-booking__display3"></p>
+          </div>
         </article>
         <article class="tab-content">
-          <h1 class="customer-name__display">OrderHistory</h1>
-          <p id="order-info__display">THIS IS SWEET</p>
+          <h1 class="customer-name__display">Order History</h1>
+          <p id="order-info__display"></p>
         </article>
       </section>
       <div>
@@ -45,9 +75,46 @@
             <p id="percent-occupied__display"></p>
           </div>
         </aside>
-        <fieldset>
-          <input type="input" autocomplete="off" id="customer-input__input" placeholder="Customer Search">
-        </fieldset>
+        <div class="right-section__container">
+          <fieldset>
+            <input type="input" autocomplete="off" id="customer-input__input" placeholder="Customer Search">
+            <section>
+              <div>
+                <p>Total Bill for:  <span id="current-date__bill"></span></p>
+                <div>
+                  <p>Booking: $</p>
+                  <p id="current-booking__bill"></p>
+                </div>
+                <div>
+                  <p>Orders: $</p>
+                  <p id="current-order__bill"></p>
+                </div>
+                <div>
+                  <p>Total: $</p>
+                  <p id="total-daily__bill"></p>
+                </div>
+              </div>
+              <div>
+                <p id="lifetime-spent__bill">Lifetime Bill</p>
+                <div>
+                  <p>Lifetime Booking: $</p>
+                  <p id="lifetime-booking__bill"></p>
+                </div>
+                <div>
+                  <p>Lifetime Orders: $</p>
+                  <p id="lifetime-order__bill"></p>
+                </div>
+                <div>
+                  <p>Lifetime Total: $</p>
+                  <p id="lifetime-total__bill"></p>
+                </div>
+              </div>
+            </section>
+          </fieldset>
+          <div class="order-history__display">
+            </div>
+          </div>
+        </div>
       </div>
     </main>
   </body>

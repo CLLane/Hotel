@@ -45,8 +45,9 @@ $('#customer-input__input').keypress((e) => {
     let customerId = customer.customerObj.id;
 
     let customerBookings = customer.findCustomerTotalBookings();
+
     let customerCurrentBooking = customer.findCustomerCurrentRoom(hotel.getTodaysDate());
-    let customerTotalBookingBill = customer.calculateCustomerTotalBill()
+    let customerTotalBookingBill = customer.calculateBookingTotalBill()
     let customerCurrentBookingBill = customerCurrentBooking.costPerNight
 
     let customerOrders = customer.findCustomerTotalOrders();
@@ -61,6 +62,7 @@ $('#customer-input__input').keypress((e) => {
     let customerInfo = {
       name: customerName,
       id: customerId,
+      date: hotel.getTodaysDate(),
       booking: {
         total: customerBookings,
         totalBill: customerTotalBookingBill,
