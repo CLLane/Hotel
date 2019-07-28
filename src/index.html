@@ -5,38 +5,48 @@
   </head>
   <body>
     <main>
-      <!-- <nav class="view-point__display"> -->
-        <label class="tab" for="tab-top">Main</label>
+        <label class="tab" for="tab-top">Booking</label>
         <label class="tab" for="tab-front">Customer</label>
         <label class="tab" for="tab-bottom">Orders</label>
-        <!-- <label class="tab" for="tab-back">Bookings</label> -->
         <input type="radio" name="tabs" id="tab-top">
         <input type="radio" name="tabs" id="tab-front">
         <input type="radio" name="tabs" id="tab-bottom">
-        <!-- <input type="radio" name="tabs" id="tab-back"> -->
-      <!-- </nav> -->
       <section class="cube">
         <article class="tab-content">
-          <h1>TOP CONTENT</h1>
-          <p>THIS IS AWESOME</p>
+          <h1 class="customer-name__display">Customer</h1>
+          <p id="customer-info__display">Some Stuff about the Customer</p>
         </article>
         <article class="tab-content">
-          <h1>FRONT CONTENT</h1>
-          <p>THIS IS COOL</p>
+          <h1 class="customer-name__display">Booking Date</h1>
+          <p id="booking-info__display">THIS IS COOL</p>
         </article>
         <article class="tab-content">
-          <h1>BOTTOM CONTENT</h1>
-          <p>THIS IS SWEET</p>
+          <h1 class="customer-name__display">OrderHistory</h1>
+          <p id="order-info__display">THIS IS SWEET</p>
         </article>
-        <!-- <article class="tab-content">
-          <h1>BOTTOM CONTENT</h1>
-          <p>THIS IS SWEET</p>
-        </article> -->
       </section>
       <div>
         <aside>
+          <input type="input" autocomplete="off" id="date-input__input" placeholder="YYYY/MM/DD">
+          <div>
+            <p>Date</p>
+            <p id="current-date__display"></p>
+          </div>
+          <div>
+            <p>Total Rooms Available</p>
+            <p id="rooms-available__display"></p>
+          </div>
+          <div>
+            <p>Total Revenue</p>
+            <p id="total-revenue__display"></p>
+          </div>
+          <div>
+            <p>Percent Occupied</p>
+            <p id="percent-occupied__display"></p>
+          </div>
         </aside>
         <fieldset>
+          <input type="input" autocomplete="off" id="customer-input__input" placeholder="Customer Search">
         </fieldset>
       </div>
     </main>

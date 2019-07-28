@@ -32,12 +32,13 @@ class Hotel {
   }
 
   findTotalRoomsAvailable () {
-    return this.bookingData.reduce((acc, booking) => {
-      if (booking.date !== this.getTodaysDate()) {
+    let bookedRooms = this.bookingData.reduce((acc, booking) => {
+      if (booking.date === this.getTodaysDate()) {
         acc++;
       }
       return acc
     }, 0);
+    return 50 - bookedRooms
   }
 
   findTotalRevenueFromOrders() {
@@ -61,7 +62,7 @@ class Hotel {
   }
 
   totalRevenueForToday() {
-    return this.findTotalRevenueFromOrders() + this.findTotalRevenueFromRooms()
+    return (this.findTotalRevenueFromOrders() + this.findTotalRevenueFromRooms()).toFixed(2)
    
   
   }
