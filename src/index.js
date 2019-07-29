@@ -14,6 +14,7 @@ import $ from 'jquery';
 import './css/base.scss';
 import Hotel from './Hotel.js';
 import Customer from './Customer.js'
+import Booking from './Booking.js'
 import domUpdates from './domUpdates.js';
 
 const customerAPIFetch = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users');
@@ -27,14 +28,15 @@ let customer = null;
 Promise.all([customerAPIFetch, roomAPIFetch, bookingAPIFetch, roomServiceAPIFetch])
   .then(values => Promise.all(values.map(value => value.json()))).then((data) => hotel = new Hotel(data[0], data[1], data[2], data[3]))
  
-  
+
+
 setTimeout(() => {
   let todaysDate = hotel.getTodaysDate();
   let totalRoomsAvailable = hotel.findTotalRoomsAvailable();
   let totalRevenue = hotel.totalRevenueForToday();
   let percentOccupied = hotel.findPercentRoomsFilled();
   domUpdates.pageLoadHandler(todaysDate, totalRoomsAvailable, totalRevenue, percentOccupied)
-}, 900);
+}, 800);
 
 $('#customer-input__input').keypress((e) => {
   let key = e.which;
@@ -80,7 +82,48 @@ $('#customer-input__input').keypress((e) => {
         daily: customerDailyBill
       }
     }
-console.log('customerInfo :', customerInfo);
     domUpdates.customerSearchHandler(customerInfo)
   }
+})
+
+let roomTypeSelection, bedTypeSelection, numberBedSelection, bidetSelectionStatus;
+
+$('#room-type__filter').click((e) => {
+  roomTypeSelection = e.target.dataset.type;
+  console.log('roomTypeSelection :', roomTypeSelection);
+})
+
+$('#bed-type__filter').click((e) => { 
+  bedTypeSelection = e.target.dataset.type;
+  console.log('bedTypeSelection :', bedTypeSelection);
+})
+
+$('#number-beds__filter').click((e) => {
+  numberBedSelection = eval(e.target.dataset.type);
+  console.log('numberBedSelection :', numberBedSelection);
+})
+
+$('#bidet-status__filter').click((e) => {
+  let string = e.target.dataset.type;
+  if (string === 'true') {
+    bidetSelectionStatus = true
+  } else {
+    bidetSelectionStatus = false
+  }
+  console.log('bidetSelectionStatus :', bidetSelectionStatus);
+})
+
+$('#submit-search__button').click(() => {
+  let booking = new Booking (hotel.roomData, hotel.bookingData)
+ 
+  let roomTypeFilter = booking.filterOpenRoomsByAttribute(hotel.getTodaysDate(), 'roomType', roomTypeSelection)
+
+  let bedSizeFilter = booking.filterSelectionByAttribute('bedSize', bedTypeSelection, roomTypeFilter)
+
+  let numberBedFilter = booking.filterSelectionByAttribute('numBeds', numberBedSelection, bedSizeFilter)
+
+  let bidetStatusFilter = 
+  booking.filterSelectionByAttribute('bidet', bidetSelectionStatus, numberBedFilter)
+
+  domUpdates.availableRoomsSearchResult(bidetStatusFilter)
 })

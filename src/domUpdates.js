@@ -7,6 +7,7 @@ let domUpdates = {
     $('#rooms-available__display').text(totalRooms);
     $('#total-revenue__display').text('  $' + totalRevenue)
     $('#percent-occupied__display').text(percentOccupied + '%')
+    $('.available-room__result').hide()
   },
 
   customerSearchHandler(customerInfo) {
@@ -60,6 +61,28 @@ let domUpdates = {
     }))
   },
 
+  availableRoomsSearchResult(filteredArray) {
+    $('.available-room__search').hide()
+    $('.available-room__result').show()
+
+    if (filteredArray.length < 1) {
+      return 'We do not have any rooms that match those requirements'
+    }
+    $('.available-room__result').text(filteredArray.forEach(room => {
+      $(".available-room__result").append(`
+          <div class="past-order" >
+            <p>
+              number: ${room.number}
+              Type: ${room.roomType}
+              bidet: ${room.bidet}
+              bedSize: ${room.bedSize}
+              numBeds: ${room.numBeds}
+              costPerNight: ${room.costPerNight}
+            </p>
+           </div>`)
+    }))
+    
+  }
 };
 
 export default domUpdates;

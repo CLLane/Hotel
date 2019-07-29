@@ -5,9 +5,9 @@
   </head>
   <body>
     <main>
-        <label class="tab" for="tab-top">Booking</label>
+        <label class="tab" for="tab-top">History</label>
         <label class="tab" for="tab-front">Customer</label>
-        <label class="tab" for="tab-bottom">Orders</label>
+        <label class="tab" for="tab-bottom">Book</label>
         <input type="radio" name="tabs" id="tab-top">
         <input type="radio" name="tabs" id="tab-front">
         <input type="radio" name="tabs" id="tab-bottom">
@@ -51,7 +51,7 @@
           </div>
         </article>
         <article class="tab-content">
-          <h1 class="customer-name__display">Order History</h1>
+          <h1 class="customer-name__display">Create New Booking</h1>
           <p id="past-order__display"></p>
         </article>
       </section>
@@ -113,17 +113,48 @@
           </fieldset>
           <div class="available-room__search">
             <div id="room-type__filter">
-              <label for="checkbox_id">Suite</label>
-              <input type="checkbox" id="room-checkbox__suite">
-              <label for="checkbox_id">Residental Suite</label>
-              <input type="checkbox" id="room-checkbox__residental">
-              <label for="checkbox_id">Junior Suite</label>
-              <input type="checkbox" id="room-checkbox__junior">
-              <label for="checkbox_id">Single Room</label>
-              <input type="checkbox" id="room-checkbox__single">
+              <h4>Room Type: </h4>
+              <p>Suite</p>
+              <input type="radio" name="room-type" id="room-checkbox__suite" data-type="suite">
+              <p>Residental Suite</p>
+              <input type="radio" name="room-type" id="room-checkbox__residential" data-type="residential suite">
+              <p>Junior Suite</p>
+              <input type="radio" name="room-type" id="room-checkbox__junior" data-type="junior suite">
+              <p>Single Room</p>
+              <input type="radio" name="room-type" id="room-checkbox__single" data-type="single room">
             </div>
+            <div id="bed-type__filter">
+              <h4>Bed Type: </h4>
+              <p>King</p>
+              <input type="radio" name="bed-type" id="bed-checkbox__king" data-type="king">
+              <p>Queen</p>
+              <input type="radio" name="bed-type" id="bed-checkbox__queen" data-type="queen">
+              <p>Full</p>
+              <input type="radio" name="bed-type" id="bed-checkbox__full" data-type="full">
+              <p>Twin</p>
+              <input type="radio" name="bed-type" id="bed-checkbox__twin" data-type="twin">
+            </div>
+            <div id="number-beds__filter">
+              <h4>Number of Beds: </h4>
+              <p>1</p>
+              <input type="radio" name="number-beds" id="number-beds__1" data-type="1">
+              <p>2</p>
+              <input type="radio" name="number-beds" id="number-beds__2" data-type="2">
+            </div>
+            <div id="bidet-status__filter">
+              <h4>Has Bidet: </h4>
+              <p>Yes</p>
+              <input type="radio" name="bidet-status" id="bidet-checkbox__true" data-type="true">
+              <p>No</p>
+              <input type="radio" name="bidet-status" id="bidet-checkbox__false" data-type="false">
+            </div>
+            <div id="submit-search__button">
+              <button type="button">Search For Available Rooms</button>
             </div>
           </div>
+              <div class="available-room__result">
+                
+              </div>
         </div>
       </div>
     </main>

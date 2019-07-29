@@ -67,7 +67,7 @@ describe('Hotel', () => {
     expect(ordersTotal[0].food).to.eql('Rustic Concrete Sandwich')
   });
   
-  it.only('Should be able to find the total revenue from roomservice for today', () => {
+  it('Should be able to find the total revenue from roomservice for today', () => {
     let totalRevenue = hotel.totalRevenueForToday();
     expect(totalRevenue).to.eql(371.74);
   })
