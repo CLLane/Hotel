@@ -43,7 +43,12 @@
           </div>
         </article>
         <article class="tab-content">
-          <h1>Past Bookings</h1>
+          <p class="history-tab" data-type="past-booking">Booking</p>
+          <p class="history-tab" 
+          data-type="past-order">Ordering</p>
+          <div class="past-order__container">
+            <p id="past-order__display"></p>
+          </div>
           <div class="past-booking__container">
             <p id="past-booking__display1"></p>
             <p id="past-booking__display2"></p>
@@ -52,7 +57,6 @@
         </article>
         <article class="tab-content">
           <h1 class="customer-name__display">Create New Booking</h1>
-          <p id="past-order__display"></p>
         </article>
       </section>
       <div>
@@ -148,13 +152,12 @@
               <p>No</p>
               <input type="radio" name="bidet-status" id="bidet-checkbox__false" data-type="false">
             </div>
-            <div id="submit-search__button">
-              <button type="button">Search For Available Rooms</button>
+            <div class="submit-search__button">
+                <input id="submit-date" type="input" placeholder="YYYY/MM/DD">
+              <button id="submit-search__button" type="button">Search For Available Rooms</button>
             </div>
           </div>
-              <div class="available-room__result">
-                
-              </div>
+            <div class="available-room__result"></div>
         </div>
       </div>
     </main>

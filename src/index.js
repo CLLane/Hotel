@@ -1,15 +1,3 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you import jQuery into a JS file if you use jQuery in that file
-// import $ from 'jquery';
-
-// An example of how you tell webpack to use a CSS (SCSS) file
-// import './css/base.scss';
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-// import './images/turing-logo.png'
-
 import $ from 'jquery';
 import './css/base.scss';
 import Hotel from './Hotel.js';
@@ -32,9 +20,9 @@ Promise.all([customerAPIFetch, roomAPIFetch, bookingAPIFetch, roomServiceAPIFetc
 
 setTimeout(() => {
   let todaysDate = hotel.getTodaysDate();
-  let totalRoomsAvailable = hotel.findTotalRoomsAvailable();
-  let totalRevenue = hotel.totalRevenueForToday();
-  let percentOccupied = hotel.findPercentRoomsFilled();
+  let totalRoomsAvailable = hotel.findTotalRoomsAvailable(todaysDate);
+  let totalRevenue = hotel.totalRevenueForToday(todaysDate);
+  let percentOccupied = hotel.findPercentRoomsFilled(todaysDate);
   domUpdates.pageLoadHandler(todaysDate, totalRoomsAvailable, totalRevenue, percentOccupied)
 }, 800);
 
@@ -90,17 +78,14 @@ let roomTypeSelection, bedTypeSelection, numberBedSelection, bidetSelectionStatu
 
 $('#room-type__filter').click((e) => {
   roomTypeSelection = e.target.dataset.type;
-  console.log('roomTypeSelection :', roomTypeSelection);
 })
 
 $('#bed-type__filter').click((e) => { 
   bedTypeSelection = e.target.dataset.type;
-  console.log('bedTypeSelection :', bedTypeSelection);
 })
 
 $('#number-beds__filter').click((e) => {
   numberBedSelection = eval(e.target.dataset.type);
-  console.log('numberBedSelection :', numberBedSelection);
 })
 
 $('#bidet-status__filter').click((e) => {
@@ -110,14 +95,17 @@ $('#bidet-status__filter').click((e) => {
   } else {
     bidetSelectionStatus = false
   }
-  console.log('bidetSelectionStatus :', bidetSelectionStatus);
 })
 
 $('#submit-search__button').click(() => {
   let booking = new Booking (hotel.roomData, hotel.bookingData)
  
-  let roomTypeFilter = booking.filterOpenRoomsByAttribute(hotel.getTodaysDate(), 'roomType', roomTypeSelection)
+  let date = $('#submit-date').val();
 
+  let dateFilter = booking.findAllOpenRooms(date)
+  
+  let roomTypeFilter = booking.filterSelectionByAttribute('roomType', roomTypeSelection, dateFilter)
+  
   let bedSizeFilter = booking.filterSelectionByAttribute('bedSize', bedTypeSelection, roomTypeFilter)
 
   let numberBedFilter = booking.filterSelectionByAttribute('numBeds', numberBedSelection, bedSizeFilter)
@@ -126,4 +114,26 @@ $('#submit-search__button').click(() => {
   booking.filterSelectionByAttribute('bidet', bidetSelectionStatus, numberBedFilter)
 
   domUpdates.availableRoomsSearchResult(bidetStatusFilter)
+
+  $('#reset-search__button').click(() => {
+
+  })
+})
+
+$('#date-input__input').keypress((e) => {
+  let key = e.which;
+  let date = $('#date-input__input').val()
+  let totalRoomsAvailable = hotel.findTotalRoomsAvailable(date);
+  let totalRevenue = hotel.totalRevenueForToday(date);
+  let percentOccupied = hotel.findPercentRoomsFilled(date);
+  if (key === 13) {
+    domUpdates.pageLoadHandler( date, totalRoomsAvailable, totalRevenue, percentOccupied)
+    $('#date-input__input').val('')
+  }
+
+})
+
+$('.history-tab').click((e) => {
+  let historySelection = e.target.dataset.type
+  domUpdates.showHistoryData(historySelection)
 })

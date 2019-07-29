@@ -169,16 +169,19 @@ button {
 
 #past-booking__display1,
 #past-booking__display2,
-#past-booking__display3 {
+#past-booking__display3,
+#past-order__display {
   display: flex;
   margin-top: 11px;
 }
 
-.past-booking__container {
+.past-booking__container,
+.past-order__container {
   width: 100%;
   flex-direction: column;
   align-items: center;
 }
+
 
 .past-booking {
   flex-direction: column;
@@ -191,6 +194,18 @@ button {
   box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.8);
 }
 
+.past-order {
+  flex-direction: column;
+  justify-content: space-around;
+  height: 90px;
+  width: 250px;
+  margin-right: 5px;
+  margin-left: 5px;
+  background-color: lightblue;
+  border: solid black 2px;
+  border-radius: 10px;
+  box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.8);
+}
 .customer-container__display {
   justify-content: space-around;
   margin-top: 11px;
@@ -241,8 +256,7 @@ button {
   flex-direction: column;
 }
 
-.available-room__search,
-.available-room__result {
+.available-room__search, {
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
@@ -257,23 +271,28 @@ button {
   box-shadow: 3px 7px 0px 0px rgba(0, 0, 0, 0.8);
 }
 
+.available-room__result {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px;
+    width: 100%;
+    height: 275px;
+    margin-top: 15px;
+    margin-left: 12px;
+    border: none;
+    background: bisque;
+    border-radius: 10px;
+    border: solid black 2px;
+    box-shadow: 3px 7px 0px 0px rgba(0, 0, 0, 0.8);
+}
+
 .past-order {
-    /* margin-left: 15px; */
-    /* margin-right: 15px; */
     width: 257px;
-    /* height: 133px; */
-    /* margin-right: 5px; */
-    /* margin-left: 5px; */
     padding: 6px;
     background-color: lightblue;
     border: solid black 2px;
     border-radius: 10px;
     box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.8);
-}
-
-#past-order__display {
-  display: flex;
-  justify-content: space-evenly;
 }
 
 .current-bill__display,
@@ -288,7 +307,7 @@ button {
 
 #room-type__filter,
 #bed-type__filter,
-#submit-search__button,
+.submit-search__button,
 #number-beds__filter,
 #bidet-status__filter {
   display: flex;
@@ -305,3 +324,47 @@ button {
         margin: 10px;
       }
 }
+.submit-search__button {
+  flex-direction: column;
+    & button {
+      margin-top: 5px;
+    }
+}
+.room-available{
+  width: 250px;
+  padding: 6px;
+  background-color: lightblue;
+  border: solid black 2px;
+  border-radius: 10px;
+  box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.8);
+  flex-direction: column;
+  justify-content: space-evenly;
+    & p {
+      margin: 0;
+    }
+
+  }
+  
+  #reset-search__button {
+    width: 65px;
+    height: 65px;
+    align-self: flex-end;
+    margin-left: auto;
+  }
+
+  .history-tab {
+    display: inline-block;
+    height: 30px;
+    width: 75px;
+    padding: 4px;
+    margin-top: 10px;
+    position: relative;
+    background-color: lightblue;
+    border: solid black 2px;
+    border-radius: 10px;
+    box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.8);
+  }
+
+  #submit-date {
+    text-align: center;
+  }

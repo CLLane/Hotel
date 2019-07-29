@@ -11,6 +11,7 @@ let domUpdates = {
   },
 
   customerSearchHandler(customerInfo) {
+    console.log(customerInfo)
     $('#customer-input__input').val('');
     $('#current-date__bill').text(customerInfo.date);
     $('#current-booking__bill').text(customerInfo.bill.daily);
@@ -21,7 +22,18 @@ let domUpdates = {
     $('#lifetime-order__bill').text(customerInfo.order.totalBill);
     $('#lifetime-total__bill').text(customerInfo.bill.total)
 
-    $('#past-booking__display').text(customerInfo.booking.total.forEach((booking, i) => {
+    $('.past-order__container').text(
+      customerInfo.order.total.forEach(order => {
+        $("#past-order__display").append(`<div class="past-order" >
+        <p>Date: ${order.date}</p>
+        <p>Order: ${order.food}</p>
+        <p>Cost: ${order.totalCost}</p>
+        </div>`)
+      }));
+
+    $('.past-order__container').hide();
+
+    $('.past-booking__container').text(customerInfo.booking.total.forEach((booking, i) => {
       if (i <= 9) {
         $("#past-booking__display1").append(`<div class="past-booking" >
         <p>Date: ${booking.date} Room: ${booking.roomNumber}</p>
@@ -47,42 +59,63 @@ let domUpdates = {
     $('#current-bidet-status__display').text(customerInfo.booking.daily.bidet);
     $('#current-room-cost__display').text(customerInfo.booking.daily.costPerNight)
 
-    $('.order-history__display').text(customerInfo.order.total.forEach((order, i) => {
-      if (i <= 9) {
-        $("#past-order__display").append(`
-        <div class="past-order" >
-          <p>
-            Date: ${order.date} <br>
-            Food: ${order.food} <br>
-            Cost: ${order.totalCost} <br>
-          </p>
-        </div>`)
-      }
-    }))
   },
 
   availableRoomsSearchResult(filteredArray) {
     $('.available-room__search').hide()
     $('.available-room__result').show()
+    $('input[name="room-type"').prop('checked', false)
+    $('input[name="bed-type"').prop('checked', false)
+    $('input[name="number-beds"').prop('checked', false)
+    $('input[name="bidet-status"').prop('checked', false)
 
     if (filteredArray.length < 1) {
-      return 'We do not have any rooms that match those requirements'
-    }
-    $('.available-room__result').text(filteredArray.forEach(room => {
       $(".available-room__result").append(`
-          <div class="past-order" >
-            <p>
-              number: ${room.number}
-              Type: ${room.roomType}
-              bidet: ${room.bidet}
-              bedSize: ${room.bedSize}
-              numBeds: ${room.numBeds}
-              costPerNight: ${room.costPerNight}
-            </p>
+        <div class="room-available" >
+         <p>'We do not have any rooms that match those requirements'</p>
+        </div>`)
+
+      $('.available-room__result').append(`<button type="button" id="reset-search__button">Reset Search</button>`)
+
+      $('#reset-search__button').click(() => {
+        $('.available-room__search').show()
+        $('.available-room__result').hide()
+      })
+
+    } else {
+      $('.available-room__result').text(filteredArray.forEach(room => {
+        $(".available-room__result").append(`
+          <div class="room-available" >
+              <p>Room: ${room.number}</p>
+              <p>Type: ${room.roomType}</p>
+              <p>Bed Size: ${room.bedSize}</p>
+              <p>#Beds: ${room.numBeds}</p>
+              <p>Bidet: ${room.bidet}</p>
+              <p>Cost/Night: ${room.costPerNight}</p>
            </div>`)
-    }))
-    
+      }))
+      
+      $('.available-room__result').append(`<button type="button" id="reset-search__button">Reset Search</button>`)
+
+      $('#reset-search__button').click(() => {
+        $('.available-room__search').show()
+        $('.available-room__result').hide()
+      })
+    }
+  },
+  
+  showHistoryData(selection) {
+    if (selection === 'past-order') {
+      $('.past-booking__container').hide();
+      $('.past-order__container').show();
+    } 
+    if (selection === 'past-booking') {
+      $('.past-order__container').hide();
+      $('.past-booking__container').show();
+
+    }
   }
+
 };
 
 export default domUpdates;

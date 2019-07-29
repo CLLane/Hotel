@@ -25,15 +25,15 @@ class Hotel {
     return [year, month, day].join('/');
   }
 
-  findAllOrdersForDate() {
+  findAllOrdersForDate(date) {
     return this.roomServiceData.filter(order => {
-      return order.date === this.getTodaysDate()
+      return order.date === date
     })
   }
 
-  findTotalRoomsAvailable () {
+  findTotalRoomsAvailable (date) {
     let bookedRooms = this.bookingData.reduce((acc, booking) => {
-      if (booking.date === this.getTodaysDate()) {
+      if (booking.date === date) {
         acc++;
       }
       return acc
@@ -41,18 +41,18 @@ class Hotel {
     return 50 - bookedRooms
   }
 
-  findTotalRevenueFromOrders() {
-    let ordersForToday = this.findAllOrdersForDate();
+  findTotalRevenueFromOrders(date) {
+    let ordersForToday = this.findAllOrdersForDate(date);
     return ordersForToday.reduce((acc, order) => {
       acc += order.totalCost
       return acc
     }, 0)
   }
 
-  findTotalRevenueFromRooms() {
+  findTotalRevenueFromRooms(date) {
     return this.roomData.reduce((acc, room) => {
       this.bookingData.forEach(booking => {
-        if (booking.date === this.getTodaysDate() && 
+        if (booking.date === date && 
         booking.roomNumber === room.number) {
           acc += room.costPerNight
         }
@@ -61,14 +61,12 @@ class Hotel {
     }, 0)
   }
 
-  totalRevenueForToday() {
-    return (this.findTotalRevenueFromOrders() + this.findTotalRevenueFromRooms()).toFixed(2)
-   
-  
+  totalRevenueForToday(date) {
+    return (this.findTotalRevenueFromOrders(date) + this.findTotalRevenueFromRooms(date)).toFixed(2)
   }
 
-  findPercentRoomsFilled() {
-    let roomsAvailable = this.findTotalRoomsAvailable();
+  findPercentRoomsFilled(date) {
+    let roomsAvailable = this.findTotalRoomsAvailable(date);
     let totalRooms = this.roomData.length;
     let percentRoomsEmpty = roomsAvailable / totalRooms;
     let percentRoomsFilled = (percentRoomsEmpty - 1) * -100;
