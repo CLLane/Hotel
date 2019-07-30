@@ -31,7 +31,6 @@ let domUpdates = {
         </div>`)
       }));
 
-    $('.past-order__container').hide();
 
     $('.past-booking__container').text(customerInfo.booking.total.forEach((booking, i) => {
       if (i <= 9) {
@@ -112,10 +111,19 @@ let domUpdates = {
     if (selection === 'past-booking') {
       $('.past-order__container').hide();
       $('.past-booking__container').show();
+    }
+  },
 
+  showCreateSelection(selection) {
+    if (selection === 'create-booking') {
+      $('#new-booking__container').show();
+      $('#new-order__container').hide()
+    } 
+    if(selection === 'create-order') {
+      $('#new-booking__container').hide();
+      $('#new-order__container').show()
     }
   }
-
 };
 
 export default domUpdates;

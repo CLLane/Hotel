@@ -17,6 +17,8 @@ Promise.all([customerAPIFetch, roomAPIFetch, bookingAPIFetch, roomServiceAPIFetc
   .then(values => Promise.all(values.map(value => value.json()))).then((data) => hotel = new Hotel(data[0], data[1], data[2], data[3]))
  
 
+$('.past-order__container').hide();
+$('#new-order__container').hide();
 
 setTimeout(() => {
   let todaysDate = hotel.getTodaysDate();
@@ -98,25 +100,37 @@ $('#bidet-status__filter').click((e) => {
 })
 
 $('#submit-search__button').click(() => {
-  let booking = new Booking (hotel.roomData, hotel.bookingData)
+  let booking = new Booking(hotel.roomData, hotel.bookingData, hotel.customerData)
  
   let date = $('#submit-date').val();
 
   let dateFilter = booking.findAllOpenRooms(date)
+
+  console.log('dateFilter :', dateFilter);
   
   let roomTypeFilter = booking.filterSelectionByAttribute('roomType', roomTypeSelection, dateFilter)
+
+  console.log('roomTypeFilter :', roomTypeFilter);
   
   let bedSizeFilter = booking.filterSelectionByAttribute('bedSize', bedTypeSelection, roomTypeFilter)
 
+console.log('bedSizeFilter :', bedSizeFilter);
+
   let numberBedFilter = booking.filterSelectionByAttribute('numBeds', numberBedSelection, bedSizeFilter)
+
+  console.log('numberBedFilter :', numberBedFilter);
 
   let bidetStatusFilter = 
   booking.filterSelectionByAttribute('bidet', bidetSelectionStatus, numberBedFilter)
 
+  console.log('bidetStatusFilter :', bidetStatusFilter);
+
   domUpdates.availableRoomsSearchResult(bidetStatusFilter)
 
   $('#reset-search__button').click(() => {
-
+    $('#submit-date').val('')
+    $('.room-available').remove()
+    $('#reset-search__button').remove()
   })
 })
 
@@ -136,4 +150,9 @@ $('#date-input__input').keypress((e) => {
 $('.history-tab').click((e) => {
   let historySelection = e.target.dataset.type
   domUpdates.showHistoryData(historySelection)
+})
+
+$('.create-new-tab').click((e) => {
+  let createSelection = e.target.dataset.type
+  domUpdates.showCreateSelection(createSelection)
 })

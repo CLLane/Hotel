@@ -11,7 +11,7 @@ let booking, hotel;
 
 beforeEach(() => {
   hotel = new Hotel(fakeData[0], fakeData[1], fakeData[2], fakeData[3])
-  booking = new Booking(hotel.roomData, hotel.bookingData)
+  booking = new Booking(hotel.roomData, hotel.bookingData, hotel.customerData)
 });
 
 describe('Booking', () => {
@@ -30,7 +30,7 @@ describe('Booking', () => {
     expect(openRooms.length).to.eql(19)
   })
 
-  it.only('should be able to filter available rooms by a room type', () => {
+  it('should be able to filter available rooms by a room type', () => {
     let suites = booking.filterOpenRoomsByAttribute("2019/10/29", 'roomType', 'suite');
 
     let kings = booking.filterOpenRoomsByAttribute("2019/10/29", 'bedSize', 'king')
@@ -43,5 +43,12 @@ describe('Booking', () => {
     expect(kings.length).to.eql(6);
     expect(bidet.length).to.eql(6);
     expect(numberBeds.length).to.eql(6);
+  })
+
+  it.only('should be able to create a new booking', () => {
+
+    let newBooking = booking.createNewBooking('Tim Tom', 3, '2019/08/03')
+
+    expect(newBooking).to.eql(1)
   })
 });

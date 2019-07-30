@@ -352,7 +352,8 @@ button {
     margin-left: auto;
   }
 
-  .history-tab {
+  .history-tab,
+  .create-new-tab {
     display: inline-block;
     height: 30px;
     width: 75px;
@@ -367,4 +368,25 @@ button {
 
   #submit-date {
     text-align: center;
+  }
+
+
+  #new-booking__container, 
+  #new-order__container {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    margin-top: 50px;
+      & input {
+        display: flex;
+      }
+  }
+
+  .new-booking__input,
+  .new-order__input {
+    display: flex;
+    flex-direction: column;
+    & p {
+      margin-bottom: 10px;
+    }
   }

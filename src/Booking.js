@@ -1,7 +1,9 @@
+
 class Booking {
-  constructor(roomData, bookingData) {
+  constructor(roomData, bookingData, customerData) {
     this.roomData = roomData;
     this.bookingData = bookingData;
+    this.customerData = customerData
   }
 
   findAllBookings(date) {
@@ -36,6 +38,29 @@ class Booking {
     })
   } 
 
+  createNewBooking(customerName, roomNumber, date) {
+
+    let findRoom = this.findAllOpenRooms(date).findIndex(room => {
+      return room.number === roomNumber
+    })
+
+    let foundRoom = this.findAllOpenRooms(date).slice(x, x + 1)
+
+    
+    
+    let newBooking = {
+      id: this.customerData.length + 1,
+      date,
+      roomNumber
+    }
+
+    let newUser = {
+      id: this.customerData.length + 1,
+      name: customerName
+    }
+
+    return [newBooking, newUser, foundRoom];
+  }
 }
 
 export default Booking;
