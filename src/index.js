@@ -19,6 +19,7 @@ Promise.all([customerAPIFetch, roomAPIFetch, bookingAPIFetch, roomServiceAPIFetc
 
 $('.past-order__container').hide();
 $('#new-order__container').hide();
+$('#customer-booked').hide();
 
 setTimeout(() => {
   let todaysDate = hotel.getTodaysDate();
@@ -160,6 +161,14 @@ $('#new-customer__submit').click(() => {
   hotel.customerData.push(newBooking[1])
   
 
-  $('#new-booking__container').text(`You have Created a booking for ${customerName}`)
+  $('#new-booking__container').hide()
+  
+  $('#customer-booked__name').text(`${customerName} on ${bookingDate} in room ${roomNumber}`)
+  $('#customer-booked').show().fadeOut(6000)
 
+  $('#new-booking__input').val('');
+  $('#new-booking__roomnumber').val('');
+  $('#new-booking__date').val('');
+  
+  $('#new-booking__container').delay(6050).fadeIn('fast')
 })
