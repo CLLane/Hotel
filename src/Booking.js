@@ -39,15 +39,12 @@ class Booking {
   } 
 
   createNewBooking(customerName, roomNumber, date) {
-
-    let findRoom = this.findAllOpenRooms(date).findIndex(room => {
-      return room.number === roomNumber
+    let index = this.findAllOpenRooms(date).findIndex(room => {
+      return room.number === eval(roomNumber)
     })
-
-    let foundRoom = this.findAllOpenRooms(date).slice(x, x + 1)
-
-    
-    
+console.log(index)
+    let foundRoom = this.findAllOpenRooms(date).slice(index, index + 1)
+     console.log(foundRoom)
     let newBooking = {
       id: this.customerData.length + 1,
       date,

@@ -123,7 +123,8 @@ let domUpdates = {
       $('#new-booking__container').hide();
       $('#new-order__container').show()
     }
-  }
+  },
+
 };
 
 export default domUpdates;

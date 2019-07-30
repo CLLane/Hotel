@@ -106,24 +106,14 @@ $('#submit-search__button').click(() => {
 
   let dateFilter = booking.findAllOpenRooms(date)
 
-  console.log('dateFilter :', dateFilter);
-  
   let roomTypeFilter = booking.filterSelectionByAttribute('roomType', roomTypeSelection, dateFilter)
 
-  console.log('roomTypeFilter :', roomTypeFilter);
-  
   let bedSizeFilter = booking.filterSelectionByAttribute('bedSize', bedTypeSelection, roomTypeFilter)
-
-console.log('bedSizeFilter :', bedSizeFilter);
 
   let numberBedFilter = booking.filterSelectionByAttribute('numBeds', numberBedSelection, bedSizeFilter)
 
-  console.log('numberBedFilter :', numberBedFilter);
-
   let bidetStatusFilter = 
   booking.filterSelectionByAttribute('bidet', bidetSelectionStatus, numberBedFilter)
-
-  console.log('bidetStatusFilter :', bidetStatusFilter);
 
   domUpdates.availableRoomsSearchResult(bidetStatusFilter)
 
@@ -155,4 +145,21 @@ $('.history-tab').click((e) => {
 $('.create-new-tab').click((e) => {
   let createSelection = e.target.dataset.type
   domUpdates.showCreateSelection(createSelection)
+})
+
+$('#new-customer__submit').click(() => {
+  let booking = new Booking(hotel.roomData, hotel.bookingData, hotel.customerData)
+
+  let customerName = $('#new-booking__input').val();
+  let roomNumber = $('#new-booking__roomnumber').val();
+  let bookingDate = $('#new-booking__date').val();
+
+  let newBooking = booking.createNewBooking(customerName, roomNumber, bookingDate)
+
+  hotel.bookingData.push(newBooking[0])
+  hotel.customerData.push(newBooking[1])
+  
+
+  $('#new-booking__container').text(`You have Created a booking for ${customerName}`)
+
 })
