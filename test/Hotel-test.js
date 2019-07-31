@@ -1,10 +1,14 @@
 import chai from 'chai';
+import domUpdates from '../src/domUpdates.js'
 import fakeData from '../src/data.js'
 import Hotel from '../src/Hotel';
+import spies from 'chai-spies'
 const expect = chai.expect;
-
+chai.use(spies)
 
 var hotel;
+
+chai.spy.on(domUpdates, ['pageLoadHandler', 'customerSearchHandler', 'availableRoomsSearchResult', 'showHistoryData', 'showCreateSelection'], () => {})
 
 beforeEach(() => {
   hotel = new Hotel(fakeData[0], fakeData[1], fakeData[2], fakeData[3])
@@ -67,7 +71,7 @@ describe('Hotel', () => {
     expect(ordersTotal[0].food).to.eql('Rustic Concrete Sandwich')
   });
   
-  it.only('Should be able to find the total revenue from roomservice for today', () => {
+  it('Should be able to find the total revenue from roomservice for today', () => {
     let totalRevenue = hotel.totalRevenueForToday();
     expect(totalRevenue).to.eql(371.74);
   })

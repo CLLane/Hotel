@@ -1,7 +1,209 @@
 #rooms-available__display,
 #total-revenue__display,
 #percent-occupied__display,
-#current-date__display {
-  color: white;
+#current-date__display,
+#current-room-type__display,
+#current-room-number__display,
+#current-bed-size__display,
+#current-bed-count__display,
+#current-bidet-status__display,
+#current-room-cost__display,
+#current-date__bill,
+#current-booking__bill,
+#current-order__bill,
+#total-daily__bill,
+#lifetime-booking__bill,
+#lifetime-order__bill,
+#lifetime-total__bill
+ {
+  color: dimgray;
 }
 
+#past-booking__display1,
+#past-booking__display2,
+#past-booking__display3,
+#past-order__display {
+  display: flex;
+  margin-top: 11px;
+}
+
+.past-booking__container,
+.past-order__container {
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.past-booking {
+  flex-direction: column;
+  align-items: center;
+  height: 38px;
+  padding: 2px;
+  width: 110px;
+  margin-right: 5px;
+  margin-left: 5px;
+  background-color: #fefbef;
+  border: solid black 2px;
+  border-radius: 10px;
+  box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.8);
+    & p {
+      font-weight: bold;
+      font-size: 13px;
+      display: flex;
+      margin: 0;
+    }
+}
+
+.past-order {
+  flex-direction: column;
+  justify-content: space-around;
+  height: 90px;
+  width: 250px;
+  margin-right: 5px;
+  margin-left: 5px;
+  background-color: #fefbef;
+  border: solid black 2px;
+  border-radius: 10px;
+  box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.8);
+}
+
+
+.customer-container__display {
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.customer-header__display {
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 75px;
+  width: 15%;
+  background-color: #fefbef;
+  border: solid black 2px;
+  border-radius: 10px;
+  box-shadow: 3px 7px 0px 0px rgba(0, 0, 0, 0.8);
+}
+
+#customer-id__display {
+  margin: auto;
+  width: 35%;
+}
+
+#customer-name__display {
+  margin: auto;
+  width: 30%;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.tab {
+  width: 6.5%;
+  margin-top: 0px;
+  background-color: #fefbef;
+  border: solid black 2px;
+  border-radius: 10px;
+  box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.8);
+}
+
+.right-section__container {
+  width: 59.4%;
+  flex-direction: column;
+}
+
+.available-room__search {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 275px;
+  margin-top: 15px;
+  margin-left: 12px;
+  border: none;
+  background: #e1dcfa;
+  border-radius: 10px;
+  border: solid black 2px;
+  box-shadow: 3px 7px 0px 0px rgba(0, 0, 0, 0.8);
+}
+
+.available-room__result {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+  width: 100%;
+  height: 275px;
+  margin-top: 15px;
+  margin-left: 12px;
+  border: none;
+  background:		#f8f2d9;
+  border-radius: 10px;
+  border: solid black 2px;
+  box-shadow: 3px 7px 0px 0px rgba(0, 0, 0, 0.8);
+}
+
+.past-order {
+  width: 257px;
+  padding: 6px;
+  background-color: #fefbef;
+  border: solid black 2px;
+  border-radius: 10px;
+  box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.8);
+}
+
+.current-bill__display,
+.total-bill__display {
+  background-color: #fefbef;
+  border: solid black 2px;
+  border-radius: 10px;
+  box-shadow: 3px 7px 0px 0px rgba(0, 0, 0, 0.8);
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#room-type__filter,
+#bed-type__filter,
+.submit-search__button,
+#number-beds__filter,
+#bidet-status__filter {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  & h4 {
+    margin: 5px;
+    font-size: 18px;
+  }
+  & input {
+    display: unset;
+  }
+    & p {
+      margin: 10px;
+    }
+}
+.submit-search__button {
+  flex-direction: column;
+  justify-content: center;
+  & button {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    width: 84%;
+  }
+}
+.room-available{
+  width: 250px;
+  padding: 6px;
+  background-color: #fefbef;
+  border: solid black 2px;
+  border-radius: 10px;
+  box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.8);
+  flex-direction: column;
+  justify-content: space-evenly;
+    & p {
+      margin: 0;
+    }
+
+  }
+  
+ 
