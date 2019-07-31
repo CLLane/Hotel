@@ -5,94 +5,93 @@
   </head>
   <body>
     <main>
-        <label class="tab" for="tab-top">History</label>
-        <label class="tab" for="tab-front">Customer</label>
-        <label class="tab" for="tab-bottom">Book</label>
-        <input type="radio" name="tabs" id="tab-top">
-        <input type="radio" name="tabs" id="tab-front">
-        <input type="radio" name="tabs" id="tab-bottom">
-      <section class="cube">
-        <article class="tab-content">
-          <h1 id="customer-name__display">Customer Info Board</h1>
-          <p id="customer-id__display">Please Select a customer to view their information.</p>
-          <div class="customer-container__display">
-            <div class="customer-header__display">
-              <p>Room Type</p>
-              <p id="current-room-type__display">-</p>
-            </div>
-            <div class="customer-header__display">
-              <p>Room Number</p>
-              <p id="current-room-number__display">-</p>
-            </div>
-            <div class="customer-header__display">
-              <p>Bed Size</p>
-              <p id="current-bed-size__display">-</p>
-            </div>
-            <div class="customer-header__display">
-              <p>Bed Count</p>
-              <p id="current-bed-count__display">-</p>
-            </div>
-            <div class="customer-header__display">
-              <p>Bidet</p>
-              <p id="current-bidet-status__display">-</p>
-            </div>
-            <div class="customer-header__display">
-              <p>Cost</p>
-              <p id="current-room-cost__display">-</p>
-            </div>
+      <label class="tab" for="tab-top">History</label>
+      <label class="tab" for="tab-front">Customer</label>
+      <label class="tab" for="tab-bottom">Book</label>
+      <input type="radio" name="tabs" id="tab-top">
+      <input type="radio" name="tabs" id="tab-front">
+      <input type="radio" name="tabs" id="tab-bottom">
+    <section class="cube">
+      <article class="tab-content">
+        <h1 id="customer-name__display">Customer Info Board</h1>
+        <p id="customer-id__display">Please Select a customer to view their information.</p>
+        <div class="customer-container__display">
+          <div class="customer-header__display">
+            <p>Room Type</p>
+            <p id="current-room-type__display">-</p>
           </div>
-        </article>
-        <article class="tab-content">
-          <p class="history-tab" data-type="past-booking">Booking</p>
-          <p class="history-tab" 
-          data-type="past-order">Ordering</p>
-          <div class="past-order__container">
-            <p id="past-order__display"></p>
+          <div class="customer-header__display">
+            <p>Room Number</p>
+            <p id="current-room-number__display">-</p>
           </div>
-          <div class="past-booking__container">
-            <p id="past-booking__display1"></p>
-            <p id="past-booking__display2"></p>
-            <p id="past-booking__display3"></p>
+          <div class="customer-header__display">
+            <p>Bed Size</p>
+            <p id="current-bed-size__display">-</p>
           </div>
-        </article>
-        <article class="tab-content">
-          <p class="create-new-tab" data-type="create-booking">Booking</p>
-          <p class="create-new-tab" data-type="create-order">Ordering</p>
-          <div id="new-booking__container">
-            <div class="new-booking__input">
-              <p>Customer Name</p>
-              <input type="input" autocomplete="off" id="new-booking__input" placeholder="Enter new customer name">
-            </div>
-            <div class="new-booking__input">
-              <p>Room Number</p>
-              <input type="input" autocomplete="off" id="new-booking__roomnumber" placeholder="Enter room Number">
-            </div>
-            <div class="new-booking__input">
-              <p>Booking Date</p>
-              <input type="input" autocomplete="off" id="new-booking__date" placeholder="YYYY/MM/DD">
-            </div>
+          <div class="customer-header__display">
+            <p>Bed Count</p>
+            <p id="current-bed-count__display">-</p>
           </div>
-            <div id="customer-submit__div">
-            <button type="button" id="new-customer__submit">Submit New Customer</button>
+          <div class="customer-header__display">
+            <p>Bidet</p>
+            <p id="current-bidet-status__display">-</p>
           </div>
-          <p id="customer-booked">You have created a booking for <span id="customer-booked__name"></span></p>
-          <div id="new-order__container">
-            <div class="new-order__input">
-              <p>Room Number</p>
-              <input type="input" autocomplete="off" id="new-order__input" placeholder="Enter room number">
-            </div>
-            <div class="new-order__input">
-              <p>Food Order</p>
-              <input type="input" autocomplete="off" id="new-order__food" placeholder="Enter order">
-            </div>
-            </div>
-            <div id="order-submit__div">
-              <button type="button" id="new-order__submit">Submit New Order</button>
-            </div>
+          <div class="customer-header__display">
+            <p>Cost</p>
+            <p id="current-room-cost__display">-</p>
           </div>
-
-        </article>
-      </section>
+        </div>
+      </article>
+      <article class="tab-content">
+        <p class="history-tab" data-type="past-booking">Booking</p>
+        <p class="history-tab" 
+        data-type="past-order">Ordering</p>
+        <div class="past-order__container">
+          <p id="past-order__display"></p>
+        </div>
+        <div class="past-booking__container">
+          <p id="past-booking__display1"></p>
+          <p id="past-booking__display2"></p>
+          <p id="past-booking__display3"></p>
+        </div>
+      </article>
+      <article class="tab-content">
+        <p class="create-new-tab" data-type="create-booking">Booking</p>
+        <p class="create-new-tab" data-type="create-order">Ordering</p>
+        <div id="new-booking__container">
+          <div class="new-booking__input">
+            <p>Customer Name</p>
+            <input type="input" autocomplete="off" id="new-booking__input" placeholder="Enter new customer name">
+          </div>
+          <div class="new-booking__input">
+            <p>Room Number</p>
+            <input type="input" autocomplete="off" id="new-booking__roomnumber" placeholder="Enter room Number">
+          </div>
+          <div class="new-booking__input">
+            <p>Booking Date</p>
+            <input type="input" autocomplete="off" id="new-booking__date" placeholder="YYYY/MM/DD">
+          </div>
+        </div>
+          <div id="customer-submit__div">
+          <button type="button" id="new-customer__submit">Submit New Customer</button>
+        </div>
+        <p id="customer-booked">You have created a booking for <span id="customer-booked__name"></span></p>
+        <div id="new-order__container">
+          <div class="new-order__input">
+            <p>Room Number</p>
+            <input type="input" autocomplete="off" id="new-order__input" placeholder="Enter room number">
+          </div>
+          <div class="new-order__input">
+            <p>Food Order</p>
+            <input type="input" autocomplete="off" id="new-order__food" placeholder="Enter order">
+          </div>
+          </div>
+          <div id="order-submit__div">
+            <button type="button" id="new-order__submit">Submit New Order</button>
+          </div>
+        </div>
+      </article>
+    </section>
       <div>
         <aside>
           <input type="input" autocomplete="off" id="date-input__input" placeholder="YYYY/MM/DD">
@@ -114,7 +113,6 @@
           </div>
         </aside>
         <div class="right-section__container">
-          <!-- <fieldset> -->
             <section class="bill-section">
                 <input type="input" autocomplete="off" id="customer-input__input" placeholder="Customer Search">
               <div>
@@ -150,7 +148,6 @@
                 </div>
               </div>
             </section>
-          <!-- </fieldset> -->
           <div class="available-room__search">
             <div id="room-type__filter">
               <h4>Room Type: </h4>

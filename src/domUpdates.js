@@ -11,17 +11,14 @@ let domUpdates = {
   },
 
   customerSearchHandler(customerInfo) {
-    console.log(customerInfo)
     $('#customer-input__input').val('');
     $('#current-date__bill').text(customerInfo.date);
     $('#current-booking__bill').text(`$${customerInfo.bill.daily}`);
     $('#current-order__bill').text(`$${customerInfo.order.dailyTotal}`);
     $('#total-daily__bill').text(`$${customerInfo.bill.daily}`);
-
     $('#lifetime-booking__bill').text(`$${customerInfo.booking.totalBill}`);
     $('#lifetime-order__bill').text(`$${customerInfo.order.totalBill}`);
     $('#lifetime-total__bill').text(`$${customerInfo.bill.total}`)
-
     $('.past-order__container').text(
 
       customerInfo.order.total.forEach(order => {
@@ -34,7 +31,6 @@ let domUpdates = {
 
 
     $('.past-booking__container').text(customerInfo.booking.total.forEach((booking, i) => {
-
       if (i <= 9) {
         $("#past-booking__display1").append(`<div class="past-booking" >
         <p>Date: ${booking.date} Room: ${booking.roomNumber}</p>
@@ -53,7 +49,6 @@ let domUpdates = {
         </div>`)
       }
     }))
-    
     $('#customer-name__display').text(customerInfo.name)
     $('#customer-id__display').text(`Customer Id: ${customerInfo.id}`)
     $('#current-room-type__display').text(customerInfo.booking.daily.roomType);
@@ -62,7 +57,6 @@ let domUpdates = {
     $('#current-bed-count__display').text(customerInfo.booking.daily.numBeds);
     $('#current-bidet-status__display').text(customerInfo.booking.daily.bidet);
     $('#current-room-cost__display').text(customerInfo.booking.daily.costPerNight)
-
   },
 
   availableRoomsSearchResult(filteredArray) {
@@ -78,14 +72,11 @@ let domUpdates = {
         <div class="room-available" >
          <p>'We do not have any rooms that match those requirements'</p>
         </div>`)
-
       $('.available-room__result').append(`<button type="button" id="reset-search__button">Reset Search</button>`)
-
       $('#reset-search__button').click(() => {
         $('.available-room__search').show()
         $('.available-room__result').hide()
       })
-
     } else {
       $('.available-room__result').text(filteredArray.forEach(room => {
         $(".available-room__result").append(`
@@ -98,9 +89,7 @@ let domUpdates = {
               <p>Cost/Night: ${room.costPerNight}</p>
            </div>`)
       }))
-      
       $('.available-room__result').append(`<button type="button" id="reset-search__button">Reset Search</button>`)
-
       $('#reset-search__button').click(() => {
         $('.available-room__search').show()
         $('.available-room__result').hide()
@@ -132,8 +121,7 @@ let domUpdates = {
       $('#new-booking__container').hide();
       $('#new-order__container').show();
     }
-  },
-
+  }
 };
 
 export default domUpdates;

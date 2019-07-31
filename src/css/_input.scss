@@ -9,25 +9,117 @@
 }
 
 #customer-input__input{
-    display: unset;
-    width: 45%;
-    height: 50px;
-    border: solid black 2px;
-    box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.8);
-    border-radius: 8px;
-    margin-top: 20px;
-    text-align: center;
-    font-size: 35px;
+  display: unset;
+  width: 45%;
+  height: 50px;
+  border: solid black 2px;
+  box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.8);
+  border-radius: 8px;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 35px;
 }
 
 #date-input__input {
-    display: unset;
-    width: 65%;
-    height: 40px;
-    border: solid black 2px;
-    box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.8);
-    border-radius: 8px;
-    margin-top: 20px;
-    text-align: center;
-    font-size: 35px;
+  display: unset;
+  width: 65%;
+  height: 40px;
+  border: solid black 2px;
+  box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.8);
+  border-radius: 8px;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 35px;
+}
+
+#reset-search__button {
+  width: 65px;
+  height: 65px;
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+.history-tab,
+.create-new-tab {
+  display: inline-block;
+  height: 30px;
+  width: 90px;
+  padding: 4px;
+  margin-top: 10px;
+  margin-left: 10px;
+  position: relative;
+  background-color: #fefbef;
+  border: solid black 2px;
+  border-radius: 10px;
+  box-shadow: 2px 3px 0px 0px rgba(0, 0, 0, 0.8);
+}
+
+#submit-date {
+  text-align: center;
+}
+
+#new-booking__container, 
+#new-order__container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 20px;
+    & input {
+      display: flex;
+    }
+}
+
+.new-booking__input,
+.new-order__input {
+  display: flex;
+  flex-direction: column;
+  & p {
+    font-size: 25px;
+    margin-bottom: 5px;
+  }
+}
+
+.new-booking__input {
+  width: 25%;
+  margin: auto;
+}
+
+#new-booking__input,
+#new-booking__roomnumber,
+#new-booking__date,
+#new-order__input,
+#new-order__food,
+#submit-date {
+  border: solid black 2px;
+  border-radius: 10px;
+  box-shadow: 3px 7px 0px 0px rgba(0, 0, 0, 0.8);
+  height: 38px;
+  text-align: center;
+}
+
+#new-customer__submit,
+#new-order__submit {
+  width: 20%;
+}
+
+#customer-submit__div,
+#order-submit__div {
+  justify-content: center;
+  margin-top: 25px;
+}
+
+#room-checkbox__suite,
+#room-checkbox__residential,
+#room-checkbox__junior,
+#room-checkbox__single,
+#bed-checkbox__king,
+#bed-checkbox__queen,
+#bed-checkbox__full,
+#bed-checkbox__twin,
+#number-beds__1,
+#number-beds__2,
+#bidet-checkbox__true,
+#bidet-checkbox__false {
+  height: 20px;
+  width: 20px;
 }

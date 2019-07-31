@@ -1,10 +1,14 @@
 import chai from 'chai';
+import domUpdates from '../src/domUpdates.js'
 import fakeData from '../src/data.js'
 import Hotel from '../src/Hotel';
+import spies from 'chai-spies'
 const expect = chai.expect;
-
+chai.use(spies)
 
 var hotel;
+
+chai.spy.on(domUpdates, ['pageLoadHandler', 'customerSearchHandler', 'availableRoomsSearchResult', 'showHistoryData', 'showCreateSelection'], () => {})
 
 beforeEach(() => {
   hotel = new Hotel(fakeData[0], fakeData[1], fakeData[2], fakeData[3])

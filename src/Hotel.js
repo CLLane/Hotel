@@ -1,4 +1,3 @@
-
 import Customer from './Customer'
 
 class Hotel {
@@ -8,7 +7,6 @@ class Hotel {
     this.bookingData = bookingData.bookings;
     this.roomServiceData = roomServiceData.roomServices;
     this.newOrder = {}
-
   }
 
   getTodaysDate() {
@@ -76,16 +74,12 @@ class Hotel {
 
   findCustomerObject(customerQuery) {
     let formattedQuery = customerQuery.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>{}[\]\\/' '0123456789]/gi, '').toLowerCase();
-    
     let customerObject = this.customerData.filter(customer => {
       let formattedCustomer = customer.name.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>{}[\]\\/' '0123456789]/gi, '').toLowerCase();
-
       return formattedCustomer === formattedQuery;
     })[0];
-
     return customerObject !== undefined ? new Customer(customerObject, this.roomData, this.bookingData, this.roomServiceData) : `${customerQuery} does not exist, would you like to add a new customer?`;
   }
-  
 }
 
 export default Hotel;

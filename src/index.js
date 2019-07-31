@@ -1,7 +1,6 @@
 import $ from 'jquery';
 import './css/base.scss';
 import Hotel from './Hotel.js';
-import Customer from './Customer.js'
 import Booking from './Booking.js'
 import domUpdates from './domUpdates.js';
 
@@ -16,11 +15,12 @@ let customer = null;
 Promise.all([customerAPIFetch, roomAPIFetch, bookingAPIFetch, roomServiceAPIFetch])
   .then(values => Promise.all(values.map(value => value.json()))).then((data) => hotel = new Hotel(data[0], data[1], data[2], data[3]))
  
-
 $('.past-order__container').hide();
 $('#new-order__container').hide();
 $('#customer-booked').hide();
 $('#new-order__submit').hide();
+
+let roomTypeSelection, bedTypeSelection, numberBedSelection, bidetSelectionStatus;
 
 setTimeout(() => {
   let todaysDate = hotel.getTodaysDate();
@@ -37,24 +37,18 @@ $('#customer-input__input').keypress((e) => {
     customer = hotel.findCustomerObject(customerQuery);
     let customerName = customer.customerName;
     let customerId = customer.customerObj.id;
-
     let customerBookings = customer.findCustomerTotalBookings().sort((a, b) => {
       return new Date(a.date) - new Date(b.date)
     })
-  
     let customerCurrentBooking = customer.findCustomerCurrentRoom(hotel.getTodaysDate());
     let customerTotalBookingBill = customer.calculateBookingTotalBill()
     let customerCurrentBookingBill = customerCurrentBooking.costPerNight
-
     let customerOrders = customer.findCustomerTotalOrders();
     let customerDailyOrders = customer.findCustomerDailyOrders(hotel.getTodaysDate());
     let customerOrderBill = customer.calculateCustomerTotalOrderBill();
     let customerDailyOrderBill = customer.calculateCustomerDailyOrderBill(hotel.getTodaysDate());
-
-
     let customerTotalBill = customer.calculateCustomerTotalBill()
     let customerDailyBill = customer.calculateCustomerDailyBill(hotel.getTodaysDate())
-    
     let customerInfo = {
       name: customerName,
       id: customerId,
@@ -80,20 +74,15 @@ $('#customer-input__input').keypress((e) => {
   }
 })
 
-let roomTypeSelection, bedTypeSelection, numberBedSelection, bidetSelectionStatus;
-
 $('#room-type__filter').click((e) => {
   roomTypeSelection = e.target.dataset.type;
 })
-
 $('#bed-type__filter').click((e) => { 
   bedTypeSelection = e.target.dataset.type;
 })
-
 $('#number-beds__filter').click((e) => {
   numberBedSelection = eval(e.target.dataset.type);
 })
-
 $('#bidet-status__filter').click((e) => {
   let string = e.target.dataset.type;
   if (string === 'true') {
@@ -105,20 +94,13 @@ $('#bidet-status__filter').click((e) => {
 
 $('#submit-search__button').click(() => {
   let booking = new Booking(hotel.roomData, hotel.bookingData, hotel.customerData)
- 
   let date = $('#submit-date').val();
-
   let dateFilter = booking.findAllOpenRooms(date)
-
   let roomTypeFilter = booking.filterSelectionByAttribute('roomType', roomTypeSelection, dateFilter)
-
   let bedSizeFilter = booking.filterSelectionByAttribute('bedSize', bedTypeSelection, roomTypeFilter)
-
   let numberBedFilter = booking.filterSelectionByAttribute('numBeds', numberBedSelection, bedSizeFilter)
-
   let bidetStatusFilter = 
   booking.filterSelectionByAttribute('bidet', bidetSelectionStatus, numberBedFilter)
-
   domUpdates.availableRoomsSearchResult(bidetStatusFilter)
 
   $('#reset-search__button').click(() => {
@@ -138,7 +120,6 @@ $('#date-input__input').keypress((e) => {
     domUpdates.pageLoadHandler( date, totalRoomsAvailable, totalRevenue, percentOccupied)
     $('#date-input__input').val('')
   }
-
 })
 
 $('.history-tab').click((e) => {
@@ -153,25 +134,17 @@ $('.create-new-tab').click((e) => {
 
 $('#new-customer__submit').click(() => {
   let booking = new Booking(hotel.roomData, hotel.bookingData, hotel.customerData)
-
   let customerName = $('#new-booking__input').val();
   let roomNumber = $('#new-booking__roomnumber').val();
   let bookingDate = $('#new-booking__date').val();
-
   let newBooking = booking.createNewBooking(customerName, roomNumber, bookingDate)
-
   hotel.bookingData.push(newBooking[0])
   hotel.customerData.push(newBooking[1])
-  
-
   $('#new-booking__container').hide()
-  
   $('#customer-booked__name').text(`${customerName} on ${bookingDate} in room ${roomNumber}`)
   $('#customer-booked').show().fadeOut(6000)
-
   $('#new-booking__input').val('');
   $('#new-booking__roomnumber').val('');
   $('#new-booking__date').val('');
-  
   $('#new-booking__container').delay(6050).fadeIn('fast')
 })
