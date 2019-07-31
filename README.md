@@ -7,4 +7,4 @@
   - Fetch calls and SASS were implemented.
   
 ## Gif
-  
+  [Hotel gif](./src/images/ezgif.com-crop.gif)
