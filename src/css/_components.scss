@@ -1,7 +1,21 @@
 #rooms-available__display,
 #total-revenue__display,
 #percent-occupied__display,
-#current-date__display {
-  color: white;
+#current-date__display,
+#current-room-type__display,
+#current-room-number__display,
+#current-bed-size__display,
+#current-bed-count__display,
+#current-bidet-status__display,
+#current-room-cost__display,
+#current-date__bill,
+#current-booking__bill,
+#current-order__bill,
+#total-daily__bill,
+#lifetime-booking__bill,
+#lifetime-order__bill,
+#lifetime-total__bill
+ {
+  color: dimgray;
 }
 

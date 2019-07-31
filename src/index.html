@@ -18,27 +18,27 @@
           <div class="customer-container__display">
             <div class="customer-header__display">
               <p>Room Type</p>
-              <p id="current-room-type__display"></p>
+              <p id="current-room-type__display">-</p>
             </div>
             <div class="customer-header__display">
               <p>Room Number</p>
-              <p id="current-room-number__display"></p>
+              <p id="current-room-number__display">-</p>
             </div>
             <div class="customer-header__display">
               <p>Bed Size</p>
-              <p id="current-bed-size__display"></p>
+              <p id="current-bed-size__display">-</p>
             </div>
             <div class="customer-header__display">
               <p>Bed Count</p>
-              <p id="current-bed-count__display"></p>
+              <p id="current-bed-count__display">-</p>
             </div>
             <div class="customer-header__display">
               <p>Bidet</p>
-              <p id="current-bidet-status__display"></p>
+              <p id="current-bidet-status__display">-</p>
             </div>
             <div class="customer-header__display">
               <p>Cost</p>
-              <p id="current-room-cost__display"></p>
+              <p id="current-room-cost__display">-</p>
             </div>
           </div>
         </article>
@@ -71,6 +71,8 @@
               <p>Booking Date</p>
               <input type="input" autocomplete="off" id="new-booking__date" placeholder="YYYY/MM/DD">
             </div>
+          </div>
+            <div id="customer-submit__div">
             <button type="button" id="new-customer__submit">Submit New Customer</button>
           </div>
           <p id="customer-booked">You have created a booking for <span id="customer-booked__name"></span></p>
@@ -82,6 +84,10 @@
             <div class="new-order__input">
               <p>Food Order</p>
               <input type="input" autocomplete="off" id="new-order__food" placeholder="Enter order">
+            </div>
+            </div>
+            <div id="order-submit__div">
+              <button type="button" id="new-order__submit">Submit New Order</button>
             </div>
           </div>
 
@@ -108,41 +114,43 @@
           </div>
         </aside>
         <div class="right-section__container">
-          <fieldset>
-            <input type="input" autocomplete="off" id="customer-input__input" placeholder="Customer Search">
-            <section>
+          <!-- <fieldset> -->
+            <section class="bill-section">
+                <input type="input" autocomplete="off" id="customer-input__input" placeholder="Customer Search">
+              <div>
               <div class="current-bill__display">
                 <p>Total Bill for:  <span id="current-date__bill"></span></p>
                 <div>
-                  <p>Booking: $</p>
-                  <p id="current-booking__bill"></p>
+                  <p>Booking:</p>
+                  <p id="current-booking__bill">-</p>
                 </div>
                 <div>
-                  <p>Orders: $</p>
-                  <p id="current-order__bill"></p>
+                  <p>Orders:</p>
+                  <p id="current-order__bill">-</p>
                 </div>
                 <div>
-                  <p>Total: $</p>
-                  <p id="total-daily__bill"></p>
+                  <p>Total:</p>
+                  <p id="total-daily__bill">-</p>
                 </div>
               </div>
               <div class="total-bill__display">
                 <p id="lifetime-spent__bill">Lifetime Bill</p>
                 <div>
-                  <p>Lifetime Booking: $</p>
-                  <p id="lifetime-booking__bill"></p>
+                  <p>Lifetime Booking:</p>
+                  <p id="lifetime-booking__bill">-</p>
                 </div>
                 <div>
-                  <p>Lifetime Orders: $</p>
-                  <p id="lifetime-order__bill"></p>
+                  <p>Lifetime Orders:</p>
+                  <p id="lifetime-order__bill">-</p>
                 </div>
                 <div>
-                  <p>Lifetime Total: $</p>
-                  <p id="lifetime-total__bill"></p>
+                  <p>Lifetime Total:</p>
+                  <p id="lifetime-total__bill">-</p>
+                  </div>
                 </div>
               </div>
             </section>
-          </fieldset>
+          <!-- </fieldset> -->
           <div class="available-room__search">
             <div id="room-type__filter">
               <h4>Room Type: </h4>
@@ -190,4 +198,5 @@
       </div>
     </main>
   </body>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&display=swap" rel="stylesheet">
 </html>

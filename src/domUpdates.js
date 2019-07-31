@@ -14,15 +14,16 @@ let domUpdates = {
     console.log(customerInfo)
     $('#customer-input__input').val('');
     $('#current-date__bill').text(customerInfo.date);
-    $('#current-booking__bill').text(customerInfo.bill.daily);
-    $('#current-order__bill').text(customerInfo.order.dailyTotal);
-    $('#total-daily__bill').text(customerInfo.bill.daily);
+    $('#current-booking__bill').text(`$${customerInfo.bill.daily}`);
+    $('#current-order__bill').text(`$${customerInfo.order.dailyTotal}`);
+    $('#total-daily__bill').text(`$${customerInfo.bill.daily}`);
 
-    $('#lifetime-booking__bill').text(customerInfo.booking.totalBill);
-    $('#lifetime-order__bill').text(customerInfo.order.totalBill);
-    $('#lifetime-total__bill').text(customerInfo.bill.total)
+    $('#lifetime-booking__bill').text(`$${customerInfo.booking.totalBill}`);
+    $('#lifetime-order__bill').text(`$${customerInfo.order.totalBill}`);
+    $('#lifetime-total__bill').text(`$${customerInfo.bill.total}`)
 
     $('.past-order__container').text(
+
       customerInfo.order.total.forEach(order => {
         $("#past-order__display").append(`<div class="past-order" >
         <p>Date: ${order.date}</p>
@@ -33,6 +34,7 @@ let domUpdates = {
 
 
     $('.past-booking__container').text(customerInfo.booking.total.forEach((booking, i) => {
+
       if (i <= 9) {
         $("#past-booking__display1").append(`<div class="past-booking" >
         <p>Date: ${booking.date} Room: ${booking.roomNumber}</p>
@@ -44,8 +46,11 @@ let domUpdates = {
         <p>Room: ${booking.roomNumber}</p>
         </div>`)
       }
-      if (i > 18) {
-        return
+      if (i > 19 && i < 28) {
+        $("#past-booking__display3").append(`<div class="past-booking">
+        <p>Date: ${booking.date}</p> 
+        <p>Room: ${booking.roomNumber}</p>
+        </div>`)
       }
     }))
     
@@ -116,12 +121,16 @@ let domUpdates = {
 
   showCreateSelection(selection) {
     if (selection === 'create-booking') {
+      $('#customer-submit__div').show();
       $('#new-booking__container').show();
+      $('#new-order__submit').hide();
       $('#new-order__container').hide()
     } 
-    if(selection === 'create-order') {
+    if (selection === 'create-order') {
+      $('#customer-submit__div').hide();
+      $('#new-order__submit').show();
       $('#new-booking__container').hide();
-      $('#new-order__container').show()
+      $('#new-order__container').show();
     }
   },
 

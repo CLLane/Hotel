@@ -20,6 +20,7 @@ Promise.all([customerAPIFetch, roomAPIFetch, bookingAPIFetch, roomServiceAPIFetc
 $('.past-order__container').hide();
 $('#new-order__container').hide();
 $('#customer-booked').hide();
+$('#new-order__submit').hide();
 
 setTimeout(() => {
   let todaysDate = hotel.getTodaysDate();
@@ -37,8 +38,10 @@ $('#customer-input__input').keypress((e) => {
     let customerName = customer.customerName;
     let customerId = customer.customerObj.id;
 
-    let customerBookings = customer.findCustomerTotalBookings();
-
+    let customerBookings = customer.findCustomerTotalBookings().sort((a, b) => {
+      return new Date(a.date) - new Date(b.date)
+    })
+  
     let customerCurrentBooking = customer.findCustomerCurrentRoom(hotel.getTodaysDate());
     let customerTotalBookingBill = customer.calculateBookingTotalBill()
     let customerCurrentBookingBill = customerCurrentBooking.costPerNight
